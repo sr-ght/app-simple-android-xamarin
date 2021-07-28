@@ -2,6 +2,8 @@
 using Android.OS;
 using Android.Runtime;
 using AndroidX.AppCompat.App;
+using Android.Widget;
+using Android.Content;
 
 namespace AppSimpleAndroidXamarin
 {
@@ -14,6 +16,15 @@ namespace AppSimpleAndroidXamarin
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
+
+            Button btnLogin = FindViewById<Button>(Resource.Id.btn_login);
+            Button btnCadastrar = FindViewById<Button>(Resource.Id.btn_cadastrar);
+
+            btnLogin.Click += (sender, e) =>
+            {
+                Intent intent = new Intent(this, typeof(LoginActivity));
+                StartActivity(intent);
+            };
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
